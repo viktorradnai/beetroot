@@ -1,0 +1,20 @@
+# Credential file for the BeetRoot 'br' command. The fields are whitespace-separated:
+#    1. Username
+#    2. Password or * to prompt
+#    3. Type, can be login, su or sudo or any combination separated by commas
+#    4. Regexp matching the hostnames this credential will be used for
+
+# Some example lines are below:
+
+# Try logging in as root first -- this will work if you have your key on the server and
+# PermitRootLogin is set to "yes" or "without-password".
+# Do not put the actual root password here if you are using keys -- it's not needed and
+# is a security risk.
+root    root	login		.*
+
+# Login using the username and password 'fred' when logging into the server 'fredbox'.
+# Saving your password here is insecure, use at your own risk! 
+fred	fred	login,sudo	fredbox
+
+#  Try logging in as joe and use sudo to get root. Prompt for joe's password.
+joe	*	login,sudo		.*
