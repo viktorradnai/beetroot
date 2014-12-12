@@ -17,15 +17,15 @@ Examples:
 
 To get a root shell on host:
 
-    br [host]
+    br yourhost
 
 To exit from the shell, either press `Ctrl-]` or type exit twice.
     
 To run command on host:
 
-    br host command
+    br yourhost command
 
-Example: `br myserver ls -l /etc`
+Example: list the contents of the /etc directory: `br myserver ls -l /etc`
 
 Beetroot exits automatically once the command completes.
     
@@ -33,13 +33,13 @@ To run command on multiple hosts:
 
     br hostfile command
 
-Example: Count how many httpd processes are running on each web server:
+Example: count how many httpd processes are running on each web server:
 
     br ~/hosts/prod-webservers.txt 'echo -n "$HOSTNAME: "; pgrep httpd | wc -l' | grep -v BEETROOT
 
 
 If the first parameter is a valid file, BeetRoot will read it to obtain a list of hosts to run the command on.
-In the example above, ~/hosts/prod-webservers.txt contains a list of webserver hostnames, one on each line.
+In the example above, `~/hosts/prod-webservers.txt` contains a list of webserver hostnames, one on each line.
 
 
 To get a shell on multiple hosts use `br hostfile`
@@ -61,3 +61,7 @@ This must be a whitespace delimited text file. The fields are:
 4. Regexp matching the hostnames this credential will be used for
 
 See `beetroot.creds.example` for some example lines.
+
+It is recommended that you restrict the permissions on your credentials file for your user only, by running the following command:
+
+    chmod 600 ~/.ssh/beetroot.creds
